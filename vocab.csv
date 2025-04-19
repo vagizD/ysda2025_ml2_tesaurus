@@ -1,0 +1,124 @@
+Section,Subsection,Term,Comment,Link
+Sections,Common,,,
+Sections,CNN,,,
+Sections,NLP,,,
+Sections,RL,,,
+Sections,Generative Models,,,
+Sections,Libraries,,,
+
+Common,Tasks,Finetuning,Дообучить обученную на похожую задачу модель под свою,[конспект](l1.md#Finetuning)
+Common,Tasks,Pretraining
+Common,Tasks,Generation
+Common,Tasks,Transfer Learning
+Common,Tasks,Distillation
+Common,Tasks,Quantization
+Common,Losses,Cross Entropy
+Common,Losses,Label Smoothing
+Common,Losses,Mixed Precision
+Common,Losses,Loss Scaling
+Common,Operations,StepLR
+Common,Operations,ExponentialLR
+Common,Operations,ReduceOnPlateau
+Common,Operations,CosineAnnealing
+Common,Operations,ChainedLR
+Common,Operations,BatchNorm
+Common,Operations,LayerNorm
+
+Common,Terms,Temperature
+Common,Terms,Adversarial Attack
+Common,Terms,Scheduler
+Common,Terms,Warmup
+Common,Terms,Autoregression
+Common,Terms,Receptive Field
+Common,Terms,Positional Encoding
+Common,Terms,Data Noising
+Common,Terms,Skip Connection
+Common,Terms,Residual Block
+Common,Terms,Gradient Clipping
+Common,Terms,Gate
+Common,Terms,Encoder
+Common,Terms,Decoder
+Common,Terms,Expressive Power
+Common,Terms,Interpretation (Gradient Based)
+Common,Terms,Interpretation (Guided Backpropagation)
+Common,Terms,Reparametrization Trick
+Common,Terms,Denoising
+Common,Terms,Markov Process
+
+
+CNN,Architectures,CNN
+CNN,Architectures,UNet
+CNN,Architectures,ViT
+CNN,Operations,Conv2d
+CNN,Operations,Conv2dTranspose
+CNN,Terms,Dilation
+CNN,Terms,Stride
+CNN,Terms,Pooling
+CNN,Terms,Pooling (Global)
+CNN,Terms,Pooling (Average/Max)
+CNN,Terms,Deconvolutional Network
+
+
+NLP,Architectures,RNN
+NLP,Architectures,GRU
+NLP,Architectures,LSTM
+NLP,Architectures,Transformer
+NLP,Architectures,BERT
+NLP,Architectures,GPT
+NLP,Architectures,Word2Vec
+NLP,Tasks,MLM
+NLP,Tasks,NSP
+NLP,Terms,Tokens (Special)  # EOS BOS MASK CLS
+NLP,Terms,Positional Encoding
+NLP,Terms,Attention
+NLP,Terms,Masked Attention
+NLP,Terms,Multi-Head Attention
+NLP,Terms,PEFT
+NLP,Terms,LoRA
+NLP,Terms,Prompt Tuning
+
+
+RL,Architectures,
+RL,Tasks,Decision Making
+RL,Terms,Distributional Shift
+RL,Terms,Dagger Aggregation
+RL,Terms,Reward Model
+RL,Terms,Reward Discount
+RL,Terms,Policy
+RL,Terms,Environment
+
+
+
+Generative Models,Architectures,AE
+Generative Models,Architectures,VAE
+Generative Models,Architectures,GAN
+Generative Models,Architectures,Diffusion
+Generative Models,Architectures,Normalized Flows
+Generative Models,Losses,Total Variation Distance
+Generative Models,Losses,KL Divergence
+Generative Models,Losses,JS Divergence
+Generative Models,Losses,Wasserstein Distance
+Generative Models,Losses,EMD
+Generative Models,Losses,Adversarial Loss
+Generative Models,Losses,ELBO
+Generative Models,Metrics,Inception Score
+Generative Models,Metrics,Frechet Inception Distance
+Generative Models,Metrics,LPIPS
+Generative Models,Tasks,Generation (Unconditional)
+Generative Models,Tasks,Generation (Conditional)
+Generative Models,Operations,Planar Basis
+Generative Models,Operations,Radial Basis
+Generative Models,Terms,Generator
+Generative Models,Terms,Discriminator
+Generative Models,Terms,Mode Coverage
+Generative Models,Terms,Mode Collapse
+Generative Models,Terms,Distribution Coverage
+
+
+Libraries,Common,pytorch  # torchvision torchaudio torchtext
+Libraries,Common,hugging-face  # transformers datasets tokenizers accelerate evaluate peft diffusers
+Libraries,Common,streamlit
+Libraries,Common,einops
+Libraries,Optimization,optuna
+Libraries,ML,scikit-learn
+Libraries,Augmentations,albumentations
