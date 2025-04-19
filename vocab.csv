@@ -1,17 +1,17 @@
 Section;Subsection;Term;Comment;Link
 
-Common;Tasks;Finetuning;Обычно считается, что на Finetuning не замораживаем слои и хотим обучить на другую но схожую задачу, где немного другие распределения обьектов/классов. С маленьким LR выполняем.;[конспект](l1.md#использование%20предобученной%20модели)
-Common;Tasks;Pretraining;Обучение модели с нуля под общую задачу, чтобы потом ее дообучать.;[конспект](l1.md#использование%20предобученной%20модели)
-Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](l5.md#постановка%20задачи%20)
-Common;Tasks;Transfer Learning;Как finetuning, только выбранный backbone полностью замораживаем, и используем как feature extractor.;[конспект](l1.md#использование%20предобученной%20модели)
-Common;Tasks;Metric Learning;Выучивание метрики на заданном наборе данных (например, сравнивать две картинки человека, как в FaceID).;[конспект](l1.md#использование%20предобученной%20модели)
-Common;Tasks;Distillation;Большая обученная модель выступает как учитель, и к лоссу необучнной модели поменьше добавляется CE/KL/любое расстояние с логитами учителя. Позволяет обучить меньшую модель с той же предсказательной силой.;[конспект](l1.md#использование%20предобученной%20модели)
+Common;Tasks;Finetuning;Обычно считается, что на Finetuning не замораживаем слои и хотим обучить на другую но схожую задачу, где немного другие распределения обьектов/классов. С маленьким LR выполняем.;[конспект](l1.md#использование-предобученной-модели)
+Common;Tasks;Pretraining;Обучение модели с нуля под общую задачу, чтобы потом ее дообучать.;[конспект](l1.md#использование-предобученной-модели)
+Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](l5.md#постановка-задачи-)
+Common;Tasks;Transfer Learning;Как finetuning, только выбранный backbone полностью замораживаем, и используем как feature extractor.;[конспект](l1.md#использование-предобученной-модели)
+Common;Tasks;Metric Learning;Выучивание метрики на заданном наборе данных (например, сравнивать две картинки человека, как в FaceID).;[конспект](l1.md#использование-предобученной-модели)
+Common;Tasks;Distillation;Большая обученная модель выступает как учитель, и к лоссу необучнной модели поменьше добавляется CE/KL/любое расстояние с логитами учителя. Позволяет обучить меньшую модель с той же предсказательной силой.;[конспект](l1.md#использование-предобученной-модели)
 Common;Tasks;Quantization;Перевод весов (чисел) модели в тип меньшей размерности. Иногда только для хранения, иногда для инференса тоже.;[подробности](l1.md#quantization)
 
 Common;Losses;Cross Entropy;Стандартная кросс-энтропия двух распределений - $CE(p, q) = -\int p(x) \log q(x) dx$. Связана с KL.;
-Common;Losses;Label Smoothing;Правильный класс имеет вероятность не $1$, а $1 - s$. Тогда остальные классы имеют вероятность $\frac{s}{n - 1}$, где $n$ - число классов. Делаем задачу полегче с точки зрения кросс-энтропии, слабее штрафуем.;[конспект](l1.md#label%20smoothing)
-Common;Losses;Mixed Precision;Вычисления с числами разных типов.;[подробности](l1.md#mixed%20precision%20и%20loss%20scaling)
-Common;Losses;Loss Scaling;Используется для Quantization/Mixed Precision.;[подробности](l1.md#mixed%20precision%20и%20loss%20scaling)
+Common;Losses;Label Smoothing;Правильный класс имеет вероятность не $1$, а $1 - s$. Тогда остальные классы имеют вероятность $\frac{s}{n - 1}$, где $n$ - число классов. Делаем задачу полегче с точки зрения кросс-энтропии, слабее штрафуем.;[конспект](l1.md#label-smoothing)
+Common;Losses;Mixed Precision;Вычисления с числами разных типов.;[подробности](l1.md#mixed-precision-и-loss-scaling)
+Common;Losses;Loss Scaling;Используется для Quantization/Mixed Precision.;[подробности](l1.md#mixed-precision-и-loss-scaling)
 
 Common;Operations;StepLR;Каждые $k$ шагов понижаем lr в gamma раз.;[конспект](l1.md#сходимость)
 Common;Operations;ExponentialLR;Каждый шаг понижаем lr в gamma раз.;[конспект](l1.md#сходимость)
@@ -25,13 +25,13 @@ Common;Operations;LayerNorm;Нормализация каждого обьект
 Common;Terms;Temperature;Гиперпараметр при сэмплировании из распределения.;[подробности](l1.md#температура)
 Common;Terms;Head;Часть архитектуры, которая по feature map (обычно выход backbone) выполняет последний шаг задачи (например, отсюда "классификационная голова" - выдаем распределение).;
 Common;Terms;Backbone;Часть архитектуры, смысл которой - feature extraction.;
-Common;Terms;Adversarial Attack;Грязные хаки манипуляции нейронкой, когда знаешь, как и для чего она работает.;[пример](l1.md#adversarial%20attack)
+Common;Terms;Adversarial Attack;Грязные хаки манипуляции нейронкой, когда знаешь, как и для чего она работает.;[пример](l1.md#adversarial-attack)
 Common;Terms;Scheduler;Сущность при обучении, которая контролирует learning rate.;
 Common;Terms;Warmup;Специальное занижение learning rate на $k$ первых эпохах обучения;[подробности](l1.md#warmup)
 Common;Terms;Autoregression;
-Common;Terms;Receptive Field;"Область" входных данных, которую видит рассматриваемый обьект нейросети.;[подробности](l1.md#receptive%20field)
+Common;Terms;Receptive Field;"Область" входных данных, которую видит рассматриваемый обьект нейросети.;[подробности](l1.md#receptive-field)
 Common;Terms;Positional Encoding;
-Common;Terms;Data Noising;Методы борьбы с переобучением;[подробности](l1.md#зашумляем%20данные)
+Common;Terms;Data Noising;Методы борьбы с переобучением;[подробности](l1.md#зашумляем-данные)
 Common;Terms;Skip Connection
 Common;Terms;Residual Block
 Common;Terms;Gradient Clipping
@@ -55,11 +55,12 @@ CNN;Operations;Conv2d;Математическая операция свертк
 CNN;Operations;Conv2dTranspose;Аппроксимация обратной к свертке операции;[конспект](l4.md#cv), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
 
 CNN;Terms;Dilation;Увеличивает receptive field и задает spacing между точками ядра. Dilation=d превращает ядро $k \times k$ в ядро $(3 + 2d) \times (3 + 2d)$.;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Terms;Stride
-CNN;Terms;Pooling
-CNN;Terms;Pooling (Global)
-CNN;Terms;Pooling (Average/Max)
-CNN;Terms;Deconvolutional Network
+CNN;Terms;Stride;Шаг ядра свертки;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Terms;Padding;Заполнение обьекта нулями по краям, в целях манипуляции размером выхода свертки.;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Terms;Pooling;Операция, которая уменьшает spatial размерность входных данных путем агрегации по последним размерностям;[подробности](l1.md#pooling)
+CNN;Terms;Pooling (Global);Вид пулинга, где агрегация - функция от всего канала (канал ~ ось фичей, каждая фича - вектор/матрица/тензор). То есть каждому feature map сопоставляется одно число;[подробности](l1.md#pooling)
+CNN;Terms;Pooling (Kernel);Вид пулинга, где вместо агрегации по всему каналу, делаем агрегацию по окну. Это необучаемая свертка. Ровно это происходит в торчовских MaxPool/AveragePool;
+CNN;Terms;Deconvolutional Network;Сетка, которая идейно делает обратное к CNN - из маленького пространства пытается получить картинку;
 
 
 
