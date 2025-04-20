@@ -1,142 +1,138 @@
 Section;Subsection;Term;Comment;Link
 
-Common;Tasks;Finetuning;Обычно считается, что на Finetuning не замораживаем слои и хотим обучить на другую но схожую задачу, где немного другие распределения обьектов/классов. С маленьким LR выполняем.;[конспект](l1.md#использование-предобученной-модели)
-Common;Tasks;Pretraining;Обучение модели с нуля под общую задачу, чтобы потом ее дообучать.;[конспект](l1.md#использование-предобученной-модели)
-Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](l5.md#постановка-задачи-)
-Common;Tasks;Transfer Learning;Как finetuning, только выбранный backbone полностью замораживаем, и используем как feature extractor.;[конспект](l1.md#использование-предобученной-модели)
-Common;Tasks;Metric Learning;Выучивание метрики на заданном наборе данных (например, сравнивать две картинки человека, как в FaceID).;[конспект](l1.md#использование-предобученной-модели)
-Common;Tasks;Distillation;Большая обученная модель выступает как учитель, и к лоссу необучнной модели поменьше добавляется CE/KL/любое расстояние с логитами учителя. Позволяет обучить меньшую модель с той же предсказательной силой.;[конспект](l1.md#использование-предобученной-модели)
-Common;Tasks;Quantization;Перевод весов (чисел) модели в тип меньшей размерности. Иногда только для хранения, иногда для инференса тоже.;[подробности](l1.md#quantization)
+Common;Tasks;Finetuning;Обычно считается, что на Finetuning не замораживаем слои и хотим обучить на другую но схожую задачу, где немного другие распределения обьектов/классов. С маленьким LR выполняем.;[конспект](lectures/l1.md#использование-предобученной-модели)
+Common;Tasks;Pretraining;Обучение модели с нуля под общую задачу, чтобы потом ее дообучать.;[конспект](lectures/l1.md#использование-предобученной-модели)
+Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](lectures/l5.md#постановка-задачи-)
+Common;Tasks;Transfer Learning;Как finetuning, только выбранный backbone полностью замораживаем, и используем как feature extractor.;[конспект](lectures/l1.md#использование-предобученной-модели)
+Common;Tasks;Metric Learning;Выучивание метрики на заданном наборе данных (например, сравнивать две картинки человека, как в FaceID).;[конспект](lectures/l1.md#использование-предобученной-модели)
+Common;Tasks;Distillation;Большая обученная модель выступает как учитель, и к лоссу необучнной модели поменьше добавляется CE/KL/любое расстояние с логитами учителя. Позволяет обучить меньшую модель с той же предсказательной силой.;[конспект](lectures/l1.md#использование-предобученной-модели)
+Common;Tasks;Quantization;Перевод весов (чисел) модели в тип меньшей размерности. Иногда только для хранения, иногда для инференса тоже.;[подробности](lectures/l1.md#quantization)
 
 Common;Losses;Cross Entropy;Стандартная кросс-энтропия двух распределений - $CE(p, q) = -\int p(x) \log q(x) dx$. Связана с KL.;
-Common;Losses;Label Smoothing;Правильный класс имеет вероятность не $1$, а $1 - s$. Тогда остальные классы имеют вероятность $\frac{s}{n - 1}$, где $n$ - число классов. Делаем задачу полегче с точки зрения кросс-энтропии, слабее штрафуем.;[конспект](l1.md#label-smoothing)
-Common;Losses;Mixed Precision;Вычисления с числами разных типов.;[подробности](l1.md#mixed-precision-и-loss-scaling)
-Common;Losses;Loss Scaling;Используется для Quantization/Mixed Precision.;[подробности](l1.md#mixed-precision-и-loss-scaling)
+Common;Losses;Label Smoothing;Правильный класс имеет вероятность не $1$, а $1 - s$. Тогда остальные классы имеют вероятность $\frac{s}{n - 1}$, где $n$ - число классов. Делаем задачу полегче с точки зрения кросс-энтропии, слабее штрафуем.;[конспект](lectures/l1.md#label-smoothing)
+Common;Losses;Mixed Precision;Вычисления с числами разных типов.;[подробности](lectures/l1.md#mixed-precision-и-loss-scaling)
+Common;Losses;Loss Scaling;Используется для Quantization/Mixed Precision.;[подробности](lectures/l1.md#mixed-precision-и-loss-scaling)
 
-Common;Operations;StepLR;Каждые $k$ шагов понижаем lr в gamma раз.;[конспект](l1.md#сходимость)
-Common;Operations;ExponentialLR;Каждый шаг понижаем lr в gamma раз.;[конспект](l1.md#сходимость)
-Common;Operations;ReduceOnPlateau;Если лосс не уменьшался $k$ итераций, то понижаем lr в gamma раз.;[конспект](l1.md#сходимость)
-Common;Operations;CosineAnnealing;Вместо экспоненты (ExponentialLR) косинус, у которого нет "почти-плато" внизу, как у экспоненты.;[конспект](l1.md#сходимость)
-Common;Operations;ChainedScheduler;Позволяет разбить все эпохи на интервалы, и на каждой интервале запускать свой Scheduler.;[конспект](l1.md#сходимость)
-Common;Operations;SequentialLR;Принимает на вход список scheduler'ов и на каждом шаге вызывает их в переданном порядке.;[конспект](l1.md#сходимость)
-Common;Operations;BatchNorm;Нормализация вдоль оси батча.;[подробности](l1.md#normalization)
-Common;Operations;LayerNorm;Нормализация каждого обьекта независимо по батчу.;[подробности](l1.md#normalization)
+Common;Operations;StepLR;Каждые $k$ шагов понижаем lr в gamma раз.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;ExponentialLR;Каждый шаг понижаем lr в gamma раз.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;ReduceOnPlateau;Если лосс не уменьшался $k$ итераций, то понижаем lr в gamma раз.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;CosineAnnealing;Вместо экспоненты (ExponentialLR) косинус, у которого нет "почти-плато" внизу, как у экспоненты.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;ChainedScheduler;Позволяет разбить все эпохи на интервалы, и на каждой интервале запускать свой Scheduler.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;SequentialLR;Принимает на вход список scheduler'ов и на каждом шаге вызывает их в переданном порядке.;[конспект](lectures/l1.md#сходимость)
+Common;Operations;BatchNorm;Нормализация вдоль оси батча.;[подробности](lectures/l1.md#normalization)
+Common;Operations;LayerNorm;Нормализация каждого обьекта независимо по батчу.;[подробности](lectures/l1.md#normalization)
 
-Common;Terms;Temperature;Гиперпараметр при сэмплировании из распределения.;[подробности](l1.md#температура)
+Common;Terms;Temperature;Гиперпараметр при сэмплировании из распределения.;[подробности](lectures/l1.md#температура)
 Common;Terms;Head;Часть архитектуры, которая по feature map (обычно выход backbone) выполняет последний шаг задачи (например, отсюда "классификационная голова" - выдаем распределение).;
 Common;Terms;Backbone;Часть архитектуры, смысл которой - feature extraction.;
-Common;Terms;Adversarial Attack;Грязные хаки манипуляции нейронкой, когда знаешь, как и для чего она работает.;[пример](l1.md#adversarial-attack)
+Common;Terms;Adversarial Attack;Грязные хаки манипуляции нейронкой, когда знаешь, как и для чего она работает.;[пример](lectures/l1.md#adversarial-attack)
 Common;Terms;Scheduler;Сущность при обучении, которая контролирует learning rate.;
-Common;Terms;Warmup;Специальное занижение learning rate на $k$ первых эпохах обучения;[подробности](l1.md#warmup)
-Common;Terms;Autoregression;
-Common;Terms;Receptive Field;"Область" входных данных, которую видит рассматриваемый обьект нейросети.;[подробности](l1.md#receptive-field)
-Common;Terms;Positional Encoding;
-Common;Terms;Data Noising;Методы борьбы с переобучением;[подробности](l1.md#зашумляем-данные)
-Common;Terms;Skip Connection
-Common;Terms;Residual Block
-Common;Terms;Gradient Clipping
-Common;Terms;Gate
-Common;Terms;Encoder
-Common;Terms;Decoder
-Common;Terms;Expressive Power
-Common;Terms;Interpretation (Gradient Based)
-Common;Terms;Interpretation (Guided Backpropagation)
-Common;Terms;Reparametrization Trick
-Common;Terms;Denoising
-Common;Terms;Markov Process
+Common;Terms;Warmup;Специальное занижение learning rate на $k$ первых эпохах обучения;[подробности](lectures/l1.md#warmup)
+Common;Terms;Autoregression;Модель временных рядов, в которой значения зависят от предыдущих. Например, при генерации текста, мы генерируем токен, затем его добавляем в исходную последовательность, и на ее основе снова генерируем токен.;
+Common;Terms;Receptive Field;"Область" входных данных, которую видит рассматриваемый обьект нейросети.;[подробности](lectures/l1.md#receptive-field)
+Common;Terms;Positional Encoding;Способ добавлять позиционную информацию в входным данным.;[подробности](lectures/l2.md#positional-encoding)
+Common;Terms;Data Noising;Методы борьбы с переобучением;[подробности](lectures/l1.md#зашумляем-данные)
+Common;Terms;Skip Connection;Изменения слоя $f(x)$ на $\widehat{f}(x) = x + f(x)$. Улучшает обучение глубоких сетей, решает проблемы симметрии гиперплоскости функции потерь + затухающего градиента;[что за симметрия?](https://habr.com/ru/articles/688350/)
+Common;Terms;Residual Block;Блок, к которому применили skip connection.;
+Common;Terms;Gradient Clipping;Обрезание нормы градиента.;
+Common;Terms;Gating Mechanism (Gate);Операция, которая контролирует поток сигнала (активации/градиентов в контексте нейросети) - выдает числа от нуля до единицы, которые потом умножаются поэлементно на вход.;
+Common;Terms;Encoder;Mapping из входных данных в латентное пространство.;
+Common;Terms;Decoder;Mapping из латентного пространства в целевое (обычно пространство наших данных).;
+Common;Terms;Expressive Power;Насколько высокую возможность детализации имеет структура того, что является "обьяснением" ответа модели. Например, в Reasoning моделях просят LLM-ку порассуждать перед выдачей самого ответа - здесь обьяснение является текстом, что имеет высокий Expressive Power.;[конспект](lectures/l4.md#свойства-методов)
+Common;Terms;Interpretation (Gradient Based);Способ понять, на что смотрит нейросеть при решении своей задачи.;[подробности](lectures/l4.md#gradient-based)
+Common;Terms;Interpretation (Guided Backpropagation);Backpropagation путем зануления отрицательных градиентов в целях интерпретации активаций нейросети на определенном слое.;[подробности](lectures/l4.md#guided-backpropagation)
+Common;Terms;Reparametrization Trick;Общий подход из статистики, когда нужно оптимизировать матожидание, но считать честный интеграл не хотим. В нашем контексте было выражение произвольного нормального распределения через стандартное нормальное распределение.;[пример](lectures/l6.md#reparametrization-trick)
+Common;Terms;Denoising;Процесс де-зашумления данных (убираем шум из обьекта). Встречается в разных математических моделях, например, в Винировском фильтре. В нашем контексте - то, что делает диффузионная модель.;[конспект](lectures/l6.md#inverse-process)
+Common;Terms;Markov Process;Случайный процесс с Марковским свойством (привет теорвер). Вкратце означает, что следующее состояние процесса зависит только от предыдущего.;[конспект](lectures/l3.md#марковость)
 
 
 
-CNN;Architectures;CNN
-CNN;Architectures;UNet
-CNN;Architectures;ViT
+CNN;Architectures;CNN;Архитектура над 2D данными, построенная на операции свертки.;
+CNN;Architectures;UNet;Согласованная Encoder-Decoder архитектура, чтобы выход слоя энкодера можно было конкатенировать к входу слоя декодера по каналам (concatenative skip connections). Убираем согласованность Используется для по-пиксельных задач (например, сегментация).;
+CNN;Architectures;ViT;Vision Transformer - трансформер для картинок. Разбиваем картинку на патчи (картинки малого размера), добавляем к патчам positional encoding, вытягиваем в вектор и считаем, что получили эмбеддинг патча, а сам патч ~ токен из NLP. Далее закидываем в трансформер.;
 
-CNN;Operations;Conv2d;Математическая операция свертки (как дискретный случай), только без транспонирования ядра;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Operations;Conv2dTranspose;Аппроксимация обратной к свертке операции;[конспект](l4.md#cv), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Operations;Conv2d;Математическая операция свертки (как дискретный случай), только без транспонирования ядра.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Operations;Conv2dTranspose;Аппроксимация обратной к свертке операции.;[конспект](lectures/l4.md#cv), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
 
-CNN;Terms;Dilation;Увеличивает receptive field и задает spacing между точками ядра. Dilation=d превращает ядро $k \times k$ в ядро $(3 + 2d) \times (3 + 2d)$.;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Terms;Stride;Шаг ядра свертки;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Terms;Padding;Заполнение обьекта нулями по краям, в целях манипуляции размером выхода свертки.;[конспект](l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Terms;Pooling;Операция, которая уменьшает spatial размерность входных данных путем агрегации по последним размерностям;[подробности](l1.md#pooling)
-CNN;Terms;Pooling (Global);Вид пулинга, где агрегация - функция от всего канала (канал ~ ось фичей, каждая фича - вектор/матрица/тензор). То есть каждому feature map сопоставляется одно число;[подробности](l1.md#pooling)
-CNN;Terms;Pooling (Kernel);Вид пулинга, где вместо агрегации по всему каналу, делаем агрегацию по окну. Это необучаемая свертка. Ровно это происходит в торчовских MaxPool/AveragePool;
-CNN;Terms;Deconvolutional Network;Сетка, которая идейно делает обратное к CNN - из маленького пространства пытается получить картинку;
-
-
-
-NLP;Architectures;RNN
-NLP;Architectures;GRU
-NLP;Architectures;LSTM
-NLP;Architectures;Transformer
-NLP;Architectures;BERT
-NLP;Architectures;GPT
-NLP;Architectures;Word2Vec
-
-NLP;Tasks;MLM
-NLP;Tasks;NSP
-
-NLP;Terms;Tokens (Special)  # EOS BOS MASK CLS
-NLP;Terms;Positional Encoding
-NLP;Terms;Attention
-NLP;Terms;Masked Attention
-NLP;Terms;Multi-Head Attention
-NLP;Terms;PEFT
-NLP;Terms;LoRA
-NLP;Terms;Prompt Tuning
+CNN;Terms;Dilation;Увеличивает receptive field и задает spacing между точками ядра. Dilation=d превращает ядро $k \times k$ в ядро $(3 + 2d) \times (3 + 2d)$.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Terms;Stride;Шаг ядра свертки. Альтернатива пулингу.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Terms;Padding;Заполнение обьекта нулями по краям, в целях манипуляции размером выхода свертки.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Terms;Pooling;Операция, которая уменьшает spatial размерность входных данных путем агрегации по последним размерностям.;[подробности](lectures/l1.md#pooling)
+CNN;Terms;Pooling (Global);Вид пулинга, где агрегация - функция от всего канала (канал ~ ось фичей, каждая фича - вектор/матрица/тензор). То есть каждому feature map сопоставляется одно число.;[подробности](lectures/l1.md#pooling)
+CNN;Terms;Pooling (Kernel);Вид пулинга, где вместо агрегации по всему каналу, делаем агрегацию по окну. Это необучаемая свертка. Ровно это происходит в торчовских MaxPool/AveragePool.;
+CNN;Terms;Deconvolutional Network;Сетка, которая идейно делает обратное к CNN - из маленького пространства пытается получить картинку.;
 
 
 
-RL;Architectures;
+NLP;Architectures;RNN;Recurrent Neural Network - $N$ раз примененный к самому себе линейный слой + активация.;[подробности](lectures/l2.md#rnn)
+NLP;Architectures;GRU;Gated Recurrent Unit - LSTM на минималках. Input gate и Forget gate обьединены в единый update gate.;
+NLP;Architectures;LSTM;Long-Short-Term Memory - можно сказать, обучаемые skip connections в RNN.;[подробности](lectures/l2.md#lstm)
+NLP;Architectures;Transformer;Encoder-Decoder архитектура на базе Attention'а.;[подробности](lectures/l2.md#transformer)
+NLP;Architectures;BERT;Bidirectional Encoder Representations from Transformers - Encoder-only архитектура. Основная задача - получать качественные эмбеддинги текстов. Поверх этого можно делать Поиск/использовать как feature map для других сеток.;[подробности](lectures/l2.md#bert)
+NLP;Architectures;GPT;Generative Pretrained Transformer - семейство LLM-ок, которые являются глубики нейронками на базе трансформеров (слово Transformer). Обучаются на огромных наборах неразмеченных данных для решения общей задачи (слово Generative) на высоком уровне. Поэтому, могут как решать эту основную задачу, так используются для finetune'а под более специфическую задачу (слово Pretrained).;
+NLP;Architectures;Word2Vec;Механизм получения эмбеддингов слов по входному корпусу (набору текстов). Обучается под две задачи - предсказывать слово по контексту и контекст по слову. Несложным образом формулируются оптимизационные задачи.;[неплохое wiki](https://en.wikipedia.org/wiki/Word2vec)
 
-RL;Tasks;Decision Making
+NLP;Tasks;MLM;Masked Language Modelling - часть токенов выкидываем, пытаемся их предсказать по остальным.;[подробности](lectures/l2.md#mlm)
+NLP;Tasks;NSP;Next Sentence Prediction - решаем задачи Named-Entity Recognition (NER) путем введения дополнительного токена.;[подробности](lectures/l2.md#nsp)
 
-RL;Terms;Distributional Shift
-RL;Terms;Dagger Aggregation
-RL;Terms;Reward Model
-RL;Terms;Reward Discount
-RL;Terms;Policy
-RL;Terms;Environment
-
-
-
-Generative Models;Architectures;AE
-Generative Models;Architectures;VAE
-Generative Models;Architectures;GAN
-Generative Models;Architectures;Diffusion
-Generative Models;Architectures;Normalized Flows
-
-Generative Models;Losses;Total Variation Distance
-Generative Models;Losses;KL Divergence
-Generative Models;Losses;JS Divergence
-Generative Models;Losses;Wasserstein Distance
-Generative Models;Losses;EMD
-Generative Models;Losses;Adversarial Loss
-Generative Models;Losses;ELBO
-
-Generative Models;Metrics;Inception Score
-Generative Models;Metrics;Frechet Inception Distance
-Generative Models;Metrics;LPIPS
-
-Generative Models;Tasks;Generation (Unconditional)
-Generative Models;Tasks;Generation (Conditional)
-
-Generative Models;Operations;Planar Basis
-Generative Models;Operations;Radial Basis
-
-Generative Models;Terms;Generator
-Generative Models;Terms;Discriminator
-Generative Models;Terms;Mode Coverage
-Generative Models;Terms;Mode Collapse
-Generative Models;Terms;Distribution Coverage
+NLP;Terms;Tokens (Special); Перечень популярных специальных токенов: BOS, EOS, CLS, MASK.;
+NLP;Terms;PEFT;Parameter Efficient Finetuning - набор простых и эффективных методов для finetune'а.;
+NLP;Terms;LoRA;Low Rank Adaptation - замораживаем модель и дублируем некоторые слои, но вместо матрицы весов $W (n \times m)$, берем две матрицы $A (n \times r)$ и $B (r \times m)$, где $r$ (ранг матриц $A$ и $B$) на несколько порядков меньше $\min(n, m)$. Операцию $WX$ заменяем на $WX + ABX$. Основывается на научной работе, где исследуют избыточность параметров в LLM-ках.;
+NLP;Terms;Prompt Tuning;Prompt - набор токенов, который является входной последовательностью для модели, и задает ей "инструкции". Давайте выучим лучший промпт? Замораживаем модель и подаем ей на вход $K$ обучаемых эмбеддингов как входную последовательность, и лишь потом даем задание. Модель сама для себя находит оптимальные инструкции.;
+NLP;Operations;Attention;Механизм внимания, работающий за квадрат, так как считает попарные взаимодействия.;[подробности](lectures/l2.md#attention)
+NLP;Operations;Masked Attention;Тот же Attention, только некоторые взаимодействия запрещаем (ставим минум бесконечность в запрещенные ячейки выхода Attention'а). Например, при обучении Decoder'а, запрещаем смотреть на будущие токены, соответсвенно, хотим не учитывать их попарную информацию с другими токенами.;
+NLP;Operations;Multi-Head Attention;Имеем несколько голов, в каждой - свой Attention (и свои матрицы Q, K, V).;[подробности](lectures/l2.md#multi-head-attention)
 
 
-Libraries;Common;pytorch  # torchvision torchaudio torchtext
-Libraries;Common;hugging-face  # transformers datasets tokenizers accelerate evaluate peft diffusers
-Libraries;Common;streamlit
-Libraries;Common;einops
+RL;Tasks;Decision Making;Основная задача Reinforcement Learning - принятие решений в некоторой среде. Есть "агент" и "среда". Агент принимает решение, посылает его в среду, и она как-то реагирует на это.;[конспект](lectures/l3.md)
 
-Libraries;Optimization;optuna
+RL;Terms;Distributional Shift;В задачах ML/DL мы говорим важные слова про i.i.d., однако, тут есть временная зависимость от того, что мы выбираем делать.;[конспект](lectures/l3.md#проблема-distributional-shift)
+RL;Terms;Dagger;Dataset Aggregation - способ обогащения данных.;[подробности](lectures/l3.md#dagger)
+RL;Terms;Reward Model;Функция получения награды за действия.;
+RL;Terms;Reward Discount;Функция изменения награды со временем за одно и то же действие.;[подробности](lectures/l3.md#дисконтирование-награды)
+RL;Terms;Policy;Политика - стратегия агента. Иными словами, подразумевается, что у агента есть "цель", а у среды, в которой тот находится - "состояние". Политика - функция от состояния среды и аттрибутов агента, которая выдает действие агента.;
+RL;Terms;Environment;Среда - пространство, в котором оперирует агент. Реагирует на действия агента. Например, комната (среда) для робота пылесоса (агент), либо игра (среда ~ монстры, препятствия) для Марио (агент).;
+RL;Terms;Agent;Обьект, которым мы управляем внутри некоторой среды.;
 
-Libraries;ML;scikit-learn
 
-Libraries;Augmentations;albumentations
+
+Generative Models;Architectures;AE;AutoEncoder - генеративная Encoder-Decoder архитектура, которая учиться маппить входной обьект в низкоразмерное латентное пространство (Encoder), а затем восстанавливать его (Decoder). После обучения оставляем только Decoder и подаем ему на вход шум.;[подробности](lectures/l5.md#autoencoders)
+Generative Models;Architectures;VAE;Variational AutoEncoder - вместо обучения векторов латентного пространство, ограничим это пространство некоторым хорошим распределением, и обучить будем его параметры.;[подробности](lectures/l5.md#модификации)
+Generative Models;Architectures;GAN;Generative Adversarial Network (генеративно состязательные сети) - генератор учится по входному шуму генерировать картинку, дискриминатор учится отличать настоящую картинку от сгенерированной. Оба одновременно-итеративно обучаются, в итоге получаем генератор как способ генерации.;[подробности](lectures/l5.md#генеративно-состязательные-сети-gan)
+Generative Models;Architectures;Diffusion;Диффузионная модель, которая появилась в попытке решить проблемы GAN'ов.;[подробности](lectures/l6.md#диффузионные-модели-diffusion)
+Generative Models;Architectures;Normalized Flows;Нормализующие потоки - преобразуют не отдельные обьекты, а сразу распределение всех данных.;[подробности](lectures/l6.md#нормализующие-потоки-nf)
+
+Generative Models;Losses;Total Variation Distance;Сравнение распределений в лоб.;[подробности](lectures/l5.md#total-variation-distance)
+Generative Models;Losses;KL Divergence;Дивергенция Кульбака-Лейблера - способ померить схожесть распределений на базе понятия энтропии.;[подробности](lectures/l5.md#kl-divergence)
+Generative Models;Losses;JS Divergence;Небольшая модификация KL дивергенции в целях получить "честную" математическую метрику в пространстве распределений.;[подробности](lectures/l5.md#js-divergence)
+Generative Models;Losses;Wasserstein Distance;Минимальная работа, требующаяся, чтобы получить из одного распределения другое. Так же известна, как Earth Mover's Distance (EMD).;[подробности](lectures/l5.md#wasserstein-distance)
+Generative Models;Losses;Adversarial Loss;Min-max лосс для состязания генератора с дискриминатором в GAN'ах.;[подробности](lectures/l5.md#генеративно-состязательные-сети-gan)
+Generative Models;Losses;ELBO;Evidence Lower Bound - полезная оценка на логарифм правдоподобия снизу. Максимизируем ее, когда не получается работать с самим правдоподобием напрямую.;[подробности](lectures/l6.md#mle)
+
+Generative Models;Metrics;Inception Score;Способ померить качество генерации с предобученной под ваш домен другой нейросеткой.;[подробности](lectures/l5.md#метрики-генерации)
+Generative Models;Metrics;Frechet Inception Distance;Тот же Inception Score, только предполагаем нормальность реальных и сгенерированных данных и используем Frechet Distance (расстояние между нормальными распределениями).;[подробности](lectures/l5.md#метрики-генерации)
+Generative Models;Metrics;LPIPS;Learned Perceptual Image Patch Similarity - перед предобученную сетку и смотрим на L2 активаций между нашей и предобученной сетки.;[подробности](lectures/l5.md#метрики-генерации)
+
+Generative Models;Tasks;Generation (Unconditional);Генерация из распределения.;[подробности](lectures/l5.md#постановка-задачи)
+Generative Models;Tasks;Generation (Conditional);Генерация из условного распределения.;[подробности](lectures/l6.md#условная)
+
+Generative Models;Operations;Planar Basis;Семейство линейных ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#planar)
+Generative Models;Operations;Radial Basis;Семейство Гауссовых ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#radial)
+
+Generative Models;Terms;Generator;Генерирует обьект из входных данных (обычно шум).;
+Generative Models;Terms;Discriminator;В GAN'ах, учится отделять сгенерированные обьекты от настоящих.;
+Generative Models;Terms;Mode Coverage;Покрытие мод тренировочного распределения - хотим такого "качества" от генеративной модели.;
+Generative Models;Terms;Mode Collapse;Проблема генеративных моделей, когда распределение их ответов есть вырожденное распределение в модах тренировочного распределения.;
+Generative Models;Terms;Distribution Coverage;Дуальное к Mode Coverage "качество" - покрытие тренировочного распределения (в смысле площади пересечения с ним).;
+
+
+Libraries;Common;pytorch;Обучение нейросетей: torchvision, torchaudio, torchtext.;
+Libraries;Common;hugging-face;Использование готовых датасетов/моделей быстро и без регистрации: transformers, datasets, tokenizers, accelerate, evaluate, peft, diffusers.;
+Libraries;Common;streamlit;Удобный инструмент с написанием линейного скрипта и получением интерфейса.;
+Libraries;Common;einops;Перетасовка тензора как колоды карт.;
+
+Libraries;Optimization;optuna;Автоматический подбор гиперпараметров.;
+
+Libraries;ML;scikit-learn;Главная библиотека студента ML-щика.;
+
+Libraries;Augmentations;albumentations;Библиотека аугментаций картинок.;
