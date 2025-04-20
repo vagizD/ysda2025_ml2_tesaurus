@@ -2,7 +2,7 @@ Section;Subsection;Term;Comment;Link
 
 Common;Tasks;Finetuning;Обычно считается, что на Finetuning не замораживаем слои и хотим обучить на другую но схожую задачу, где немного другие распределения обьектов/классов. С маленьким LR выполняем.;[конспект](lectures/l1.md#использование-предобученной-модели)
 Common;Tasks;Pretraining;Обучение модели с нуля под общую задачу, чтобы потом ее дообучать.;[конспект](lectures/l1.md#использование-предобученной-модели)
-Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](lectures/l5.md#постановка-задачи-)
+Common;Tasks;Generation;Моделирование целевого распределения;[постановка задачи генерации](lectures/l5.md#12-постановка-задачи)
 Common;Tasks;Transfer Learning;Как finetuning, только выбранный backbone полностью замораживаем, и используем как feature extractor.;[конспект](lectures/l1.md#использование-предобученной-модели)
 Common;Tasks;Metric Learning;Выучивание метрики на заданном наборе данных (например, сравнивать две картинки человека, как в FaceID).;[конспект](lectures/l1.md#использование-предобученной-модели)
 Common;Tasks;Distillation;Большая обученная модель выступает как учитель, и к лоссу необучнной модели поменьше добавляется CE/KL/любое расстояние с логитами учителя. Позволяет обучить меньшую модель с той же предсказательной силой.;[конспект](lectures/l1.md#использование-предобученной-модели)
@@ -30,7 +30,7 @@ Common;Terms;Scheduler;Сущность при обучении, которая 
 Common;Terms;Warmup;Специальное занижение learning rate на $k$ первых эпохах обучения;[подробности](lectures/l1.md#warmup)
 Common;Terms;Autoregression;Модель временных рядов, в которой значения зависят от предыдущих. Например, при генерации текста, мы генерируем токен, затем его добавляем в исходную последовательность, и на ее основе снова генерируем токен.;
 Common;Terms;Receptive Field;"Область" входных данных, которую видит рассматриваемый обьект нейросети.;[подробности](lectures/l1.md#receptive-field)
-Common;Terms;Positional Encoding;Способ добавлять позиционную информацию в входным данным.;[подробности](lectures/l2.md#positional-encoding)
+Common;Terms;Positional Encoding;Способ добавлять позиционную информацию в входным данным.;[подробности](lectures/l2.md#413-positional-encoding)
 Common;Terms;Data Noising;Методы борьбы с переобучением;[подробности](lectures/l1.md#зашумляем-данные)
 Common;Terms;Skip Connection;Изменения слоя $f(x)$ на $\widehat{f}(x) = x + f(x)$. Улучшает обучение глубоких сетей, решает проблемы симметрии гиперплоскости функции потерь + затухающего градиента;[что за симметрия?](https://habr.com/ru/articles/688350/)
 Common;Terms;Residual Block;Блок, к которому применили skip connection.;
@@ -38,9 +38,9 @@ Common;Terms;Gradient Clipping;Обрезание нормы градиента.
 Common;Terms;Gating Mechanism (Gate);Операция, которая контролирует поток сигнала (активации/градиентов в контексте нейросети) - выдает числа от нуля до единицы, которые потом умножаются поэлементно на вход.;
 Common;Terms;Encoder;Mapping из входных данных в латентное пространство.;
 Common;Terms;Decoder;Mapping из латентного пространства в целевое (обычно пространство наших данных).;
-Common;Terms;Expressive Power;Насколько высокую возможность детализации имеет структура того, что является "обьяснением" ответа модели. Например, в Reasoning моделях просят LLM-ку порассуждать перед выдачей самого ответа - здесь обьяснение является текстом, что имеет высокий Expressive Power.;[конспект](lectures/l4.md#свойства-методов)
-Common;Terms;Interpretation (Gradient Based);Способ понять, на что смотрит нейросеть при решении своей задачи.;[подробности](lectures/l4.md#gradient-based)
-Common;Terms;Interpretation (Guided Backpropagation);Backpropagation путем зануления отрицательных градиентов в целях интерпретации активаций нейросети на определенном слое.;[подробности](lectures/l4.md#guided-backpropagation)
+Common;Terms;Expressive Power;Насколько высокую возможность детализации имеет структура того, что является "обьяснением" ответа модели. Например, в Reasoning моделях просят LLM-ку порассуждать перед выдачей самого ответа - здесь обьяснение является текстом, что имеет высокий Expressive Power.;[конспект](lectures/l4.md#11-свойства-методов)
+Common;Terms;Interpretation (Gradient Based);Способ понять, на что смотрит нейросеть при решении своей задачи.;[подробности](lectures/l4.md#23-gradient-based)
+Common;Terms;Interpretation (Guided Backpropagation);Backpropagation путем зануления отрицательных градиентов в целях интерпретации активаций нейросети на определенном слое.;[подробности](lectures/l4.md#24-guided-backpropagation)
 Common;Terms;Reparametrization Trick;Общий подход из статистики, когда нужно оптимизировать матожидание, но считать честный интеграл не хотим. В нашем контексте было выражение произвольного нормального распределения через стандартное нормальное распределение.;[пример](lectures/l6.md#reparametrization-trick)
 Common;Terms;Denoising;Процесс де-зашумления данных (убираем шум из обьекта). Встречается в разных математических моделях, например, в Винировском фильтре. В нашем контексте - то, что делает диффузионная модель.;[конспект](lectures/l6.md#inverse-process)
 Common;Terms;Markov Process;Случайный процесс с Марковским свойством (привет теорвер). Вкратце означает, что следующее состояние процесса зависит только от предыдущего.;[конспект](lectures/l3.md#марковость)
@@ -52,7 +52,7 @@ CNN;Architectures;UNet;Согласованная Encoder-Decoder архитек
 CNN;Architectures;ViT;Vision Transformer - трансформер для картинок. Разбиваем картинку на патчи (картинки малого размера), добавляем к патчам positional encoding, вытягиваем в вектор и считаем, что получили эмбеддинг патча, а сам патч ~ токен из NLP. Далее закидываем в трансформер.;
 
 CNN;Operations;Conv2d;Математическая операция свертки (как дискретный случай), только без транспонирования ядра.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
-CNN;Operations;Conv2dTranspose;Аппроксимация обратной к свертке операции.;[конспект](lectures/l4.md#cv), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+CNN;Operations;Conv2dTranspose;Аппроксимация обратной к свертке операции.;[конспект](lectures/l4.md#2-cv), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
 
 CNN;Terms;Dilation;Увеличивает receptive field и задает spacing между точками ядра. Dilation=d превращает ядро $k \times k$ в ядро $(3 + 2d) \times (3 + 2d)$.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
 CNN;Terms;Stride;Шаг ядра свертки. Альтернатива пулингу.;[конспект](lectures/l1.md#свертка), [анимации](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
@@ -64,24 +64,24 @@ CNN;Terms;Deconvolutional Network;Сетка, которая идейно дел
 
 
 
-NLP;Architectures;RNN;Recurrent Neural Network - $N$ раз примененный к самому себе линейный слой + активация.;[подробности](lectures/l2.md#rnn)
+NLP;Architectures;RNN;Recurrent Neural Network - $N$ раз примененный к самому себе линейный слой + активация.;[подробности](lectures/l2.md#11-rnn)
 NLP;Architectures;GRU;Gated Recurrent Unit - LSTM на минималках. Input gate и Forget gate обьединены в единый update gate.;
-NLP;Architectures;LSTM;Long-Short-Term Memory - можно сказать, обучаемые skip connections в RNN.;[подробности](lectures/l2.md#lstm)
-NLP;Architectures;Transformer;Encoder-Decoder архитектура на базе Attention'а.;[подробности](lectures/l2.md#transformer)
-NLP;Architectures;BERT;Bidirectional Encoder Representations from Transformers - Encoder-only архитектура. Основная задача - получать качественные эмбеддинги текстов. Поверх этого можно делать Поиск/использовать как feature map для других сеток.;[подробности](lectures/l2.md#bert)
+NLP;Architectures;LSTM;Long-Short-Term Memory - можно сказать, обучаемые skip connections в RNN.;[подробности](lectures/l2.md#12-lstm)
+NLP;Architectures;Transformer;Encoder-Decoder архитектура на базе Attention'а.;[подробности](lectures/l2.md#4-transformer)
+NLP;Architectures;BERT;Bidirectional Encoder Representations from Transformers - Encoder-only архитектура. Основная задача - получать качественные эмбеддинги текстов. Поверх этого можно делать Поиск/использовать как feature map для других сеток.;[подробности](lectures/l2.md#52-bert)
 NLP;Architectures;GPT;Generative Pretrained Transformer - семейство LLM-ок, которые являются глубики нейронками на базе трансформеров (слово Transformer). Обучаются на огромных наборах неразмеченных данных для решения общей задачи (слово Generative) на высоком уровне. Поэтому, могут как решать эту основную задачу, так используются для finetune'а под более специфическую задачу (слово Pretrained).;
 NLP;Architectures;Word2Vec;Механизм получения эмбеддингов слов по входному корпусу (набору текстов). Обучается под две задачи - предсказывать слово по контексту и контекст по слову. Несложным образом формулируются оптимизационные задачи.;[неплохое wiki](https://en.wikipedia.org/wiki/Word2vec)
 
-NLP;Tasks;MLM;Masked Language Modelling - часть токенов выкидываем, пытаемся их предсказать по остальным.;[подробности](lectures/l2.md#mlm)
-NLP;Tasks;NSP;Next Sentence Prediction - решаем задачи Named-Entity Recognition (NER) путем введения дополнительного токена.;[подробности](lectures/l2.md#nsp)
+NLP;Tasks;MLM;Masked Language Modelling - часть токенов выкидываем, пытаемся их предсказать по остальным.;[подробности](lectures/l2.md#521-mlm)
+NLP;Tasks;NSP;Next Sentence Prediction - решаем задачи Named-Entity Recognition (NER) путем введения дополнительного токена.;[подробности](lectures/l2.md#522-nsp)
 
 NLP;Terms;Tokens (Special); Перечень популярных специальных токенов: BOS, EOS, CLS, MASK.;
 NLP;Terms;PEFT;Parameter Efficient Finetuning - набор простых и эффективных методов для finetune'а.;
 NLP;Terms;LoRA;Low Rank Adaptation - замораживаем модель и дублируем некоторые слои, но вместо матрицы весов $W (n \times m)$, берем две матрицы $A (n \times r)$ и $B (r \times m)$, где $r$ (ранг матриц $A$ и $B$) на несколько порядков меньше $\min(n, m)$. Операцию $WX$ заменяем на $WX + ABX$. Основывается на научной работе, где исследуют избыточность параметров в LLM-ках.;
 NLP;Terms;Prompt Tuning;Prompt - набор токенов, который является входной последовательностью для модели, и задает ей "инструкции". Давайте выучим лучший промпт? Замораживаем модель и подаем ей на вход $K$ обучаемых эмбеддингов как входную последовательность, и лишь потом даем задание. Модель сама для себя находит оптимальные инструкции.;
-NLP;Operations;Attention;Механизм внимания, работающий за квадрат, так как считает попарные взаимодействия.;[подробности](lectures/l2.md#attention)
+NLP;Operations;Attention;Механизм внимания, работающий за квадрат, так как считает попарные взаимодействия.;[подробности](lectures/l2.md#3-attention)
 NLP;Operations;Masked Attention;Тот же Attention, только некоторые взаимодействия запрещаем (ставим минум бесконечность в запрещенные ячейки выхода Attention'а). Например, при обучении Decoder'а, запрещаем смотреть на будущие токены, соответсвенно, хотим не учитывать их попарную информацию с другими токенами.;
-NLP;Operations;Multi-Head Attention;Имеем несколько голов, в каждой - свой Attention (и свои матрицы Q, K, V).;[подробности](lectures/l2.md#multi-head-attention)
+NLP;Operations;Multi-Head Attention;Имеем несколько голов, в каждой - свой Attention (и свои матрицы Q, K, V).;[подробности](lectures/l2.md#412-multi-head-attention)
 
 
 RL;Tasks;Decision Making;Основная задача Reinforcement Learning - принятие решений в некоторой среде. Есть "агент" и "среда". Агент принимает решение, посылает его в среду, и она как-то реагирует на это.;[конспект](lectures/l3.md)
@@ -96,28 +96,28 @@ RL;Terms;Agent;Обьект, которым мы управляем внутри
 
 
 
-Generative Models;Architectures;AE;AutoEncoder - генеративная Encoder-Decoder архитектура, которая учиться маппить входной обьект в низкоразмерное латентное пространство (Encoder), а затем восстанавливать его (Decoder). После обучения оставляем только Decoder и подаем ему на вход шум.;[подробности](lectures/l5.md#autoencoders)
-Generative Models;Architectures;VAE;Variational AutoEncoder - вместо обучения векторов латентного пространство, ограничим это пространство некоторым хорошим распределением, и обучить будем его параметры.;[подробности](lectures/l5.md#модификации)
-Generative Models;Architectures;GAN;Generative Adversarial Network (генеративно состязательные сети) - генератор учится по входному шуму генерировать картинку, дискриминатор учится отличать настоящую картинку от сгенерированной. Оба одновременно-итеративно обучаются, в итоге получаем генератор как способ генерации.;[подробности](lectures/l5.md#генеративно-состязательные-сети-gan)
-Generative Models;Architectures;Diffusion;Диффузионная модель, которая появилась в попытке решить проблемы GAN'ов.;[подробности](lectures/l6.md#диффузионные-модели-diffusion)
-Generative Models;Architectures;Normalized Flows;Нормализующие потоки - преобразуют не отдельные обьекты, а сразу распределение всех данных.;[подробности](lectures/l6.md#нормализующие-потоки-nf)
+Generative Models;Architectures;AE;AutoEncoder - генеративная Encoder-Decoder архитектура, которая учиться маппить входной обьект в низкоразмерное латентное пространство (Encoder), а затем восстанавливать его (Decoder). После обучения оставляем только Decoder и подаем ему на вход шум.;[подробности](lectures/l5.md#2-autoencoders)
+Generative Models;Architectures;VAE;Variational AutoEncoder - вместо обучения векторов латентного пространство, ограничим это пространство некоторым хорошим распределением, и обучить будем его параметры.;[подробности](lectures/l5.md#23-модификации)
+Generative Models;Architectures;GAN;Generative Adversarial Network (генеративно состязательные сети) - генератор учится по входному шуму генерировать картинку, дискриминатор учится отличать настоящую картинку от сгенерированной. Оба одновременно-итеративно обучаются, в итоге получаем генератор как способ генерации.;[подробности](lectures/l5.md#3-генеративно-состязательные-сети-gan)
+Generative Models;Architectures;Diffusion;Диффузионная модель, которая появилась в попытке решить проблемы GAN'ов.;[подробности](lectures/l6.md#2-диффузионные-модели-diffusion)
+Generative Models;Architectures;Normalized Flows;Нормализующие потоки - преобразуют не отдельные обьекты, а сразу распределение всех данных.;[подробности](lectures/l6.md#1-нормализующие-потоки-nf)
 
-Generative Models;Losses;Total Variation Distance;Сравнение распределений в лоб.;[подробности](lectures/l5.md#total-variation-distance)
-Generative Models;Losses;KL Divergence;Дивергенция Кульбака-Лейблера - способ померить схожесть распределений на базе понятия энтропии.;[подробности](lectures/l5.md#kl-divergence)
-Generative Models;Losses;JS Divergence;Небольшая модификация KL дивергенции в целях получить "честную" математическую метрику в пространстве распределений.;[подробности](lectures/l5.md#js-divergence)
-Generative Models;Losses;Wasserstein Distance;Минимальная работа, требующаяся, чтобы получить из одного распределения другое. Так же известна, как Earth Mover's Distance (EMD).;[подробности](lectures/l5.md#wasserstein-distance)
-Generative Models;Losses;Adversarial Loss;Min-max лосс для состязания генератора с дискриминатором в GAN'ах.;[подробности](lectures/l5.md#генеративно-состязательные-сети-gan)
+Generative Models;Losses;Total Variation Distance;Сравнение распределений в лоб.;[подробности](lectures/l5.md#131-total-variation-distance)
+Generative Models;Losses;KL Divergence;Дивергенция Кульбака-Лейблера - способ померить схожесть распределений на базе понятия энтропии.;[подробности](lectures/l5.md#132-kl-divergence)
+Generative Models;Losses;JS Divergence;Небольшая модификация KL дивергенции в целях получить "честную" математическую метрику в пространстве распределений.;[подробности](lectures/l5.md#133-js-divergence)
+Generative Models;Losses;Wasserstein Distance;Минимальная работа, требующаяся, чтобы получить из одного распределения другое. Так же известна, как Earth Mover's Distance (EMD).;[подробности](lectures/l5.md#134-wasserstein-distance)
+Generative Models;Losses;Adversarial Loss;Min-max лосс для состязания генератора с дискриминатором в GAN'ах.;[подробности](lectures/l5.md#3-генеративно-состязательные-сети-gan)
 Generative Models;Losses;ELBO;Evidence Lower Bound - полезная оценка на логарифм правдоподобия снизу. Максимизируем ее, когда не получается работать с самим правдоподобием напрямую.;[подробности](lectures/l6.md#mle)
 
-Generative Models;Metrics;Inception Score;Способ померить качество генерации с предобученной под ваш домен другой нейросеткой.;[подробности](lectures/l5.md#метрики-генерации)
-Generative Models;Metrics;Frechet Inception Distance;Тот же Inception Score, только предполагаем нормальность реальных и сгенерированных данных и используем Frechet Distance (расстояние между нормальными распределениями).;[подробности](lectures/l5.md#метрики-генерации)
-Generative Models;Metrics;LPIPS;Learned Perceptual Image Patch Similarity - перед предобученную сетку и смотрим на L2 активаций между нашей и предобученной сетки.;[подробности](lectures/l5.md#метрики-генерации)
+Generative Models;Metrics;Inception Score;Способ померить качество генерации с предобученной под ваш домен другой нейросеткой.;[подробности](lectures/l5.md#14-метрики-генерации)
+Generative Models;Metrics;Frechet Inception Distance;Тот же Inception Score, только предполагаем нормальность реальных и сгенерированных данных и используем Frechet Distance (расстояние между нормальными распределениями).;[подробности](lectures/l5.md#14-метрики-генерации)
+Generative Models;Metrics;LPIPS;Learned Perceptual Image Patch Similarity - перед предобученную сетку и смотрим на L2 активаций между нашей и предобученной сетки.;[подробности](lectures/l5.md#14-метрики-генерации)
 
-Generative Models;Tasks;Generation (Unconditional);Генерация из распределения.;[подробности](lectures/l5.md#постановка-задачи)
-Generative Models;Tasks;Generation (Conditional);Генерация из условного распределения.;[подробности](lectures/l6.md#условная)
+Generative Models;Tasks;Generation (Unconditional);Генерация из распределения.;[подробности](lectures/l5.md#12-постановка-задачи)
+Generative Models;Tasks;Generation (Conditional);Генерация из условного распределения.;[подробности](lectures/l6.md#41-условная)
 
-Generative Models;Operations;Planar Basis;Семейство линейных ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#planar)
-Generative Models;Operations;Radial Basis;Семейство Гауссовых ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#radial)
+Generative Models;Operations;Planar Basis;Семейство линейных ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#131-planar)
+Generative Models;Operations;Radial Basis;Семейство Гауссовых ядер. Используется для нормализующих потоков.;[подробности](lectures/l6.md#132-radial)
 
 Generative Models;Terms;Generator;Генерирует обьект из входных данных (обычно шум).;
 Generative Models;Terms;Discriminator;В GAN'ах, учится отделять сгенерированные обьекты от настоящих.;
