@@ -2,7 +2,7 @@
 ## Темы
 
 1. Common
-2. CNN
+2. CV
 3. NLP
 4. RL
 5. Generative Models
